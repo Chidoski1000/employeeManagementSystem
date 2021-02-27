@@ -38,10 +38,10 @@ public class SalaryController {
         Object userObj = session.getAttribute("employee");
         if (userObj == null) return "redirect:/";
 
-        Employee employee = employeeService.getEmployeeById(id);
+        Employee emp  = (Employee)(userObj);
         model.addAttribute("salaryList", salaryService.getSalaries(id));
-        model.addAttribute("employee", employee);
-        return "empl-attendance";
+        model.addAttribute("thisEmployee", emp);
+        return "empl-dashboard";
     }
 
     @GetMapping("/salary-records")

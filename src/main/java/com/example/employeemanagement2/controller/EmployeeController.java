@@ -40,8 +40,10 @@ public class EmployeeController {
     public String employee( Model model, HttpSession session){
         Object userObj = session.getAttribute("employee");
         if (userObj == null) return "redirect:/";
+        Employee emp  = (Employee)(userObj);
 
         model.addAttribute("employee", new Employee());
+        model.addAttribute("thisEmployee", emp);
         return "empl-dashboard";
     }
 

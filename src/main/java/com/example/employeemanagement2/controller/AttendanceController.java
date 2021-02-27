@@ -69,9 +69,10 @@ public class AttendanceController {
         Object userObj = session.getAttribute("employee");
         if (userObj == null) return "redirect:/";
 
+        Employee emp  = (Employee)(userObj);
         Employee employee = employeeService.getEmployeeById(id);
         model.addAttribute("attendanceList", attendanceService.getAttendanceByEmployeeId(employee));
-        model.addAttribute("employee", employee);
-        return "empl-attendance";
+        model.addAttribute("thisEmployee", emp);
+        return "empl-dashboard";
     }
 }
