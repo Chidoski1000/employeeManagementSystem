@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+    <head>
+        <title>Sidebar 09</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" th:href="@{/style.css}">
+    </head>
+
+    <body>
+        <div class="wrapper d-flex align-items-stretch">
+            <nav id="sidebar" style="height: 720px !important">
+
+                <div class="img bg-wrap text-center py-4">
+                    <div class="user-logo">
+                        <div class="img" ></div>
+
+                    </div>
+                </div>
+                <ul class="list-unstyled components mb-5">
+                    <li class="active">
+                        <a href="#"><span class="fa fa-home mr-3"></span> Home</a>
+                    </li>
+<!--                    <li>-->
+<!--                        <a href="#" ><span class="fa fa-download mr-3 notif"><small class="d-flex align-items-center justify-content-center">5</small></span> My Attendance record</a>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <a href="#" th:href="@{/employee-salary/{id}(id=${employee.id})}"><span class="fa fa-gift mr-3"></span> My Salary record</a>-->
+<!--                    </li>-->
+                    <li>
+                        <a href="#" th:href = "@{/logout}"><span class="fa fa-sign-out mr-3"></span> Sign Out</a>
+                    </li>
+                </ul>
+
+            </nav>
+            <div>
+                <div class="col-sm-12 col-md-12 well" style="width: auto">
+                    <h1>Welcome <span th:text="${name}"></span></h1>
+                </div>
+                <span th:text="${marked}" style="color: red; font-size: 20px"></span>
+                <span th:text="${notFound}" style="color: red; font-size: 20px"></span>
+                <span th:text="${beforeTime}" style="color: red; font-size: 20px"></span>
+                <span th:text="${afterTime}" style="color: red; font-size: 20px"></span>
+                <span th:text="${success}" style="color: green; font-size: 20px"></span>
+                <form class="d-flex align-items-center" action="#" th:action="@{/mark-attendance}" th:object="${employee}" method="post">
+        <!--            <div class="form-group position-relative" style="margin-top: 100px;" >-->
+                <div class="custom-control custom-switch position-relative" style="margin-top: 50px;" >
+                    <input type="checkbox" class="custom-control-input" id="customSwitch1" value="1" onclick="terms_changed(this)">
+                    <label class="custom-control-label" for="customSwitch1">Mark daily attendance</label>
+                    <input type="submit" id="submit_button" class="btn btn-primary" disabled/>
+                </div>
+
+                </form>
+
+                <form class="d-flex align-items-end" action="#" th:action="@{/apply-leave}" th:object="${employee}" method="post">
+                    <div class="form-group position-relative" style="margin-top: 100px;" >
+                        <label class="form-check-label" >Apply for Leave (Select number of Working days)</label>
+                        <select class="form-select" aria-label="Default select example">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+                        </select>
+        <!--            </div>-->
+        <!--            <div class="form-group position-relative" style="margin-top: 100px;" >-->
+
+<!--                        <select class="form-select" aria-label="Default select example">-->
+<!--                            <option selected>Select reason for leave</option>-->
+<!--                            <option value="1">Sick Leave</option>-->
+<!--                            <option value="2">Maternity Leave</option>-->
+<!--                            <option value="3">Annual Leave</option>-->
+<!--                            <option value="4">Others</option>-->
+<!--                        </select>-->
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                </div>
+            </div>
+
+            <!-- Page Content  -->
+            <div id="content" class="p-4 p-md-5 pt-5">
+            </div>
+
+        </div>
+
+        <script src="js/jquery.min.js"></script>
+        <script src="js/popper.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/main.js"></script>
+
+        <script>
+            function terms_changed(termsCheckBox){
+                //If the checkbox has been checked
+                if(termsCheckBox.checked){
+                    //Set the disabled property to FALSE and enable the button.
+                    document.getElementById("submit_button").disabled = false;
+                } else{
+                    //Otherwise, disable the submit button.
+                    document.getElementById("submit_button").disabled = true;
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Sidebar 09</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+
+<div class="wrapper d-flex align-items-stretch">
+    <nav id="sidebar">
+<!--        <div class="custom-menu">-->
+<!--            <button type="button" id="sidebarCollapse" class="btn btn-primary">-->
+<!--            </button>-->
+<!--        </div>-->
+        <div class="img bg-wrap text-center py-4">
+            <div class="user-logo">
+<!--                <div class="img" ></div>-->
+<!--                <h3>Catriona Henderson</h3>-->
+                <h1>Welcome Admin</h1>
+            </div>
+        </div>
+
+        <ul class="list-unstyled components content mb-5">
+            <li class="active">
+                <a href="#" th:href = "@{/homepage}"><span class="fa fa-home mr-3"></span> Home</a>
+            </li>
+            <li>
+                <a href="#" th:href = "@{/daily-attendance}"><span class="fa fa-download mr-3 notif"><small class="d-flex align-items-center justify-content-center">5</small></span> Today's Attendance</a>
+            </li>
+            <li class="active">
+                <a href="#" th:href = "@{/salary-records}"><span class ="fa fa-trophy mr-3"></span> Salary Records</a>
+            </li>
+            <li class="active">
+                <a href="#" th:href = "@{/leave-records}"><span class ="fa fa-dot-circle-o mr-3"></span> Leave Records</a>
+            </li>
+            <li class="active">
+                <a href="#" th:href = "@{/newemployeeform}"><span class ="fa fa-dot-circle-o mr-3"></span> Add New Employee</a>
+            </li>
+            <li>
+                <a th:href = "@{/logout}"><span class="fa fa-sign-out mr-3"></span> Sign Out</a>
+            </li>
+        </ul>
+
+    </nav>
+
+    <div class="container my-2">
+        <h1> Employee List</h1>
+
+        <table border="1" class="table table-striped table-responsive-md">
+            <thead>
+            <tr>
+                <th> Employee First Name</th>
+                <th> Employee Last Name</th>
+                <th> Employee Email</th>
+                <th> Actions </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="employee : ${listEmployees}">
+                <td th:text="${employee.firstname}"></td>
+                <td th:text="${employee.lastName}"></td>
+                <td th:text="${employee.email}"></td>
+                <td>
+                    <a th:href="@{/formforupdate/{id}(id=${employee.id})}" class = "btn btn-primary">Update</a>
+                    <a th:href="@{/deleteemployee/{id}(id=${employee.id})}" class = "btn btn-danger">Delete</a>
+                    <a th:href="@{/formforAddSalary/{id}(id=${employee.id})}" class = "btn btn-warning">Add Salary</a>
+                    <a th:href="@{/viewemployee/{id}(id=${employee.id})}" class = "btn btn-success">View</a>
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

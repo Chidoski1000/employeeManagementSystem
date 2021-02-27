@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Management System</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+          crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h1> Employee Management System </h1>
+    <hr>
+    <h2> Save Employee</h2>
+
+    <form action="#" th:action="@{/save-salary/{id}(id=${employee.id})}" th:object = "${salary}", method="POST">
+        <input type="text" th:field = "*{month}" placeholder="Month paid" class ="form-control mb-4 col-4">
+
+        <input type="text" th:field = "*{amount}" placeholder="Amount Paid" class ="form-control mb-4 col-4">
+
+        <button type="submit" class="btn btn-info col-2"> Save Salary Record</button>
+
+    </form>
+</div>
+
+</body>
+</html>
