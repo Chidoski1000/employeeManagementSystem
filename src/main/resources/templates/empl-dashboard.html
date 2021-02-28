@@ -23,7 +23,7 @@
                 </div>
                 <ul class="list-unstyled components mb-5">
                     <li class="active">
-                        <a href="#"><span class="fa fa-home mr-3"></span> Home</a>
+                        <a href="#" th:href="@{/employee}"><span class="fa fa-home mr-3"></span> Home</a>
                     </li>
                     <li>
                         <a href="#" th:href="@{/employee-attendance/{id}(id=${thisEmployee.id})}"><span class="fa fa-download mr-3 notif"><small class="d-flex align-items-center justify-content-center">5</small></span> My Attendance record</a>
@@ -109,7 +109,6 @@
 
 <!--            third-->
             <div th:if="${salaryList}">
-                <h6>Welcome</h6>
                 <div class="container my-2">
                     <h1> Salary Record</h1>
 

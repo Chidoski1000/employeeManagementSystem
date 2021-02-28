@@ -14,7 +14,7 @@
     <hr>
     <h2> Save Employee</h2>
 
-    <form action="#" th:action="@{/save-salary/{id}(id=${employee.id})}" th:object = "${salary}", method="POST">
+    <form action="#" th:action="@{/save-salary/{id}(id=${employee.id})}" th:object = "${salary}" method="POST">
         <input type="text" th:field = "*{month}" placeholder="Month paid" class ="form-control mb-4 col-4">
 
         <input type="text" th:field = "*{amount}" placeholder="Amount Paid" class ="form-control mb-4 col-4">
