@@ -32,6 +32,9 @@
                         <a href="#" th:href="@{/employee-salary/{id}(id=${thisEmployee.id})}"><span class="fa fa-gift mr-3"></span> My Salary record</a>
                     </li>
                     <li>
+                        <a href="#" th:href="@{/update-password/{id}(id=${thisEmployee.id})}"><span class="fa fa-gift mr-3"></span> Update Password</a>
+                    </li>
+                    <li>
                         <a href="#" th:href = "@{/logout}"><span class="fa fa-sign-out mr-3"></span> Sign Out</a>
                     </li>
                 </ul>
@@ -109,10 +112,10 @@
 
 <!--            third-->
             <div th:if="${salaryList}">
-                <div class="container my-2">
+                <div class="container my-2" >
                     <h1> Salary Record</h1>
 
-                    <table border="1" class="table table-striped table-responsive-md">
+                    <table border="1" class="table table-striped table-responsive-md" style="width: 600px !important;">
                         <thead>
                         <tr>
                             <th> Month paid</th>
@@ -128,10 +131,24 @@
                     </table>
                 </div>
             </div>
+
+<!--        fourth-->
+            <div th:if="${newPassword}">
+                <div class="container my-2">
+
+                    <form action="#" th:action="@{/password-update/{id}(id=${thisEmployee.id})}" th:object = "${newPassword}" method="POST">
+
+                        <!-- Add hidden form field to handle update-->
+                        <input type="hidden" th:field="*{id}"/>
+                        <label style="font-size: 20px">New password</label>
+                        <input type="text" th:field = "*{password}"  style="font-size: 20px; width: 300px !important;">
+                        <button type="submit" class="btn btn-info col-2" style="width: 200px"> Change Password</button>
+
+                    </form>
+                </div>
+            </div>
         </div>
-            <!-- Page Content  -->
-<!--            <div id="content" class="p-4 p-md-5 pt-5">-->
-<!--            </div>-->
+
         <script src="js/jquery.min.js"></script>
         <script src="js/popper.js"></script>
         <script src="js/bootstrap.min.js"></script>

@@ -47,5 +47,26 @@ public class EmployeeController {
         return "empl-dashboard";
     }
 
+    @GetMapping("/update-password/{id}")
+    public  String updatePassword(@PathVariable(value = "id") long id, Model model, HttpSession session){
+        Object obj = session.getAttribute("employee");
+        if(obj == null) return "redirect:/";
+        Employee emp = (Employee) obj;
+        System.out.println("I was here");
+        model.addAttribute("thisEmployee", emp);
+        model.addAttribute("newPassword", new Employee());
+        return "empl-dashboard";
+    }
 
+
+    @PostMapping("/password-update/{id}")
+    public String passwordUpdate(@ModelAttribute("newPassword") Employee employee, @PathVariable( value = "id") long id, HttpSession session){
+        Object userObj = session.getAttribute("employee");
+        if (userObj == null) return "redirect:/";
+
+        //save employee to database
+        employeeService.updateEmployeePassword(employee, id);
+        System.out.println("I arrived here");
+        return "redirect:/employee";
+    }
 }

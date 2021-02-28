@@ -2,11 +2,9 @@ package com.example.employeemanagement2.services;
 
 import com.example.employeemanagement2.models.Attendance;
 import com.example.employeemanagement2.models.Employee;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
 public interface EmployeeService {
 
     Employee addEmployee(Employee employee);
@@ -22,5 +20,7 @@ public interface EmployeeService {
     Employee getEmployeeByEmailAndPassword(String email, String password);
 
     List<Employee> getAllEmployee();
+
+    void updateEmployeePassword(Employee employee, Long employeeId);
 
 }

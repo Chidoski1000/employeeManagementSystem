@@ -40,6 +40,13 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    public void updateEmployeePassword(Employee employee, Long employeeId) {
+        Optional<Employee> name = employeeRepository.findById(employeeId);
+        name.get().setPassword(employee.getPassword());
+        employeeRepository.save(name.get());
+    }
+
+    @Override
     public List<Employee> getAllEmployee() {
         return employeeRepository.findAll();
     }
